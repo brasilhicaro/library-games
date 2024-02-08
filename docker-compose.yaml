@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: repo
+      MYSQL_DATABASE: games_repository
+      MYSQL_USER: adm
+      MYSQL_PASSWORD: adm
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: repo
+
